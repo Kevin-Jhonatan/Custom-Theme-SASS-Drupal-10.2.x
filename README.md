@@ -25,7 +25,7 @@ v20.11.0
 ```
 npm install
 ```
-## Step 3
+## Step 4
 #### Wacth uncompressed
 ```
 npm run watch
