@@ -4,8 +4,8 @@
   "description": "Theme Custom Drupal 10",
   "main": "index.js",
   "scripts": {
-    "watch": "sass --watch sass:css",
-    "watch-compressed": "sass --watch sass:css --style compressed",
+    "watch": "sass --sourcemap=none --watch sass:css",
+    "watch-compressed": "sass --sourcemap=none --watch sass:css --style compressed",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
