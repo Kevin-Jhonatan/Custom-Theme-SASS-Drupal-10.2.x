@@ -1,0 +1,67 @@
+{#
+/**
+ * @file
+ * Default theme implementation for status messages.
+ *
+ * Displays status, error, and warning messages, grouped by type.
+ *
+ * An invisible heading identifies the messages for assistive technology.
+ * Sighted users see a colored box. See http://www.w3.org/TR/WCAG-TECHS/H69.html
+ * for info.
+ *
+ * Add an ARIA label to the contentinfo area so that assistive technology
+ * user agents will better describe this landmark.
+ *
+ * Available variables:
+ * - message_list: List of messages to be displayed, grouped by type.
+ * - status_headings: List of all status types.
+ * - attributes: HTML attributes for the element, including:
+ *   - class: HTML classes.
+ *
+ * @ingroup themeable
+ */
+#}
+<div data-drupal-messages>
+<script>
+  
+  document.addEventListener('DOMContentLoaded', function() {
+
+    toastr.options = {
+      "closeButton": true,
+      "debug": false,
+      "newestOnTop": true,
+      "progressBar": true,
+      "positionClass": "toast-top-right",
+      "preventDuplicates": false,
+      "onclick": null,
+      "showDuration": "300",
+      "hideDuration": "1000",
+      "timeOut": "8000",
+      "extendedTimeOut": "4000",
+      "showEasing": "swing",
+      "hideEasing": "linear",
+      "showMethod": "fadeIn",
+      "hideMethod": "fadeOut"
+    };
+
+    {% for type, messages in message_list %}
+      {% for message in messages %}
+        {% if type == 'status' %}
+         if ('{{ message|escape('js') }}')
+          toastr.success('{{ message|escape('js') }}', 'Éxito');
+        {% elseif type == 'warning' %}
+         if ('{{ message|escape('js') }}')
+          toastr.warning('{{ message|escape('js') }}', 'Advertencia');
+        {% elseif type == 'error' %}
+        if ('{{ message|escape('js') }}')
+            toastr.error('{{ message|escape('js') }}', 'Error');
+        {% else %}
+         if ('{{ message|escape('js') }}')
+          toastr.info('{{ message|escape('js') }}', 'Información');
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+  }, { passive: true });
+
+</script>
+</div>

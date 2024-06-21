@@ -2,7 +2,11 @@ global-css:
   css:
     theme:
       assets/css/styles.css: {}
+      assets/css/toastr.css: {}
 
 global-js:
   js:
     assets/js/script.js: {}
+    assets/js/toastr.min.js: {}
+  dependencies:
+      - core/jquery
